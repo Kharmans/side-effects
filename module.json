@@ -1,0 +1,37 @@
+{
+    "id": "side-effects",
+    "title": "Side Effects",
+    "version": "0.0.1",
+    "compatibility": {
+        "minimum": "14",
+        "verified": "14"
+    },
+    "url": "https://github.com/Autumn225/side-effects",
+    "esmodules": [
+        "scripts/module.mjs"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json",
+            "flags": {}
+        }
+    ],
+    "styles": [
+        "styles/module.css"
+    ],
+    "relationships": {
+        "systems": [
+            {
+                "id": "dnd5e",
+                "type": "system",
+                "compatibility": {
+                    "minimum": "5.3",
+                    "verified": "5.3",
+                    "maximum": "5.9.9"
+                }
+            }
+        ]
+    }
+}

@@ -126,14 +126,15 @@ class EffectDirectory extends DocumentDirectory {
     }
 }
 function effectHotbarDrop(hotbar, data, slot) {
-    if (!data.cprEffect) return;
-    let doc = fromUuidSync(data.uuid);// get the active effect
+    if (!data.uuid.includes('Compendium.world.effects')) return; // make it the variable
+    let doc = fromUuidSync(data.uuid);
+    let command = `await token.actor.createEmbeddedDocuments('ActiveEffect', [fromUuidSync('` + data.uuid + `').toObject()]);`;
     // eslint-disable-next-line no-undef
     Macro.implementation.create({
         name: doc.name,
         type: CONST.MACRO_TYPES.SCRIPT,
         img: doc.img,
-        command: `await token.actor.createEmbeddedDocuments('ActiveEffect', [{...doc.toObject(), _id: randomID()}]);` // get effect from uuid in there .toObject
+        command
     }).then((macro) => {
         game.user.assignHotbarMacro(macro, slot, {fromSlot: data.slot});
     });

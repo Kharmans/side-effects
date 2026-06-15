@@ -1,5 +1,29 @@
 {
-    "SIDEEFFECTS": {
-        "NAME": "Side Effects"
+  "SIDEEFFECTS": {
+    "NAME": "Side Effects",
+    "EffectDirectory": {
+      "AddStatusEffect": "Add to Status Effects",
+      "RemoveStatusEffect": "Remove from Status Effects",
+      "InvalidCompendiumId": "Side Effects | Effect Compendium '{compendium}' is an invalid compendium ID. Please correct the Effect Compendium setting.",
+      "InvalidCompendium": "Side Effects | Effect Compendium '{compendium}' is invalid or does not exist. Please correct the compendium or Effect Compendium setting.",
+      "CreateCompendium": {
+        "Prompt": "Effect Compendium '{compendiumId}' does not exist. Effect Interface will not load. Do you want to automatically create a new compendium named '{compendiumName}' and reload? ",
+        "Title": "Side Effects | Create Effect Compendium"
+      }
+    },
+    "Settings": {
+      "EffectCompendium": {
+        "Name": "Effect Compendium ID",
+        "Hint": "The Compendium ID of the compendium that is linked to the Effect Interface. To copy a Compendium ID, open the compendium and click the book in the top right. Paste the ID here. Default is 'world.side-effects'."
+      },
+      "EffectInterfacePlacement": {
+        "Name": "Effect Interface Placement",
+        "Hint": "Sidebar tab which the Effect Interface is placed after."
+      },
+      "EffectInterfaceEnabled": {
+        "Name": "Enable Effect Interface",
+        "Hint": "Enables the Effect Interface, a document directory in the sidebar which is linked to a compendium. Allows custom status effects and managment of effects."
+      }
     }
+  }
 }

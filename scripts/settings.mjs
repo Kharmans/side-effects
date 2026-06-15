@@ -1,3 +1,4 @@
+import {effectHud} from './applications/effectHud.mjs';
 const settingsData = {
     effectCompendiumCreated: {
         config: false,
@@ -25,7 +26,14 @@ const settingsData = {
             obj[key] = key.capitalize();
             return obj;
         }, {})
+    },
+    temporaryEffectHud: {
+        config: true,
+        type: Boolean,
+        default: false,
+        onChange: value => effectHud.toggle(value)
     }
+
 };
 function addSetting(key, options) {
     const defaultOptions = {

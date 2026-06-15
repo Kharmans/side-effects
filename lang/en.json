@@ -23,6 +23,10 @@
       "EffectInterfaceEnabled": {
         "Name": "Enable Effect Interface",
         "Hint": "Enables the Effect Interface, a document directory in the sidebar which is linked to a compendium. Allows custom status effects and managment of effects."
+      },
+      "TemporaryEffectHud": {
+        "Name": "Temporary Effects Token HUD",
+        "Hint": "Adds temporary effects to the status effect token HUD."
       }
     }
   }

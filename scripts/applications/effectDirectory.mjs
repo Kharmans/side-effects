@@ -36,13 +36,13 @@ class EffectDirectory extends DocumentDirectory {
             icon: 'fa-solid fa-bolt',
             label: 'SIDEEFFECTS.EffectDirectory.AddStatusEffect',
             onClick: this._statusOptionOnClick.bind(this),
-            visible: li => this.getDocument(li).isOwner && !this.getDocument(li).flags['side-effects']?.statusId
+            visible: li => this.getDocument(li).isOwner && !this.getDocument(li).flags['side-effects']?.statusId && this.getDocument(li).type === 'base'
         },
         {
             icon: 'fa-solid fa-bolt',
             label: 'SIDEEFFECTS.EffectDirectory.RemoveStatusEffect',
             onClick: this._statusOptionOnClick.bind(this),
-            visible: li => this.getDocument(li).isOwner && this.getDocument(li).flags['side-effects']?.statusId
+            visible: li => this.getDocument(li).isOwner && this.getDocument(li).flags['side-effects']?.statusId && this.getDocument(li).type === 'base'
         });
         let exportOption = options.find(e => e.label === 'SIDEBAR.Export');
         exportOption.onClick = this._exportOptionOnClick.bind(this);

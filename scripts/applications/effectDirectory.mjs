@@ -259,13 +259,48 @@ function effectHotbarDrop(hotbar, data, slot) {
     });
     return false;
 }
-async function registerCustomStatusEffects(enabled) {
+async function readyStatusEffects(enabled) {
     if (!enabled) return;
     let collection = foundry.ui.effects.collection;
     if (!collection) return;
+    let added = await addStatusEffects(collection);
+    if (added) await game.settings.set('side-effects', 'statusEffectsAdded', true);
     let documents = await collection.getDocuments();
     if (!documents) return;
     let statusDocuments = documents.filter(i => i.flags['side-effects']?.statusId && i.type === 'base');
+    registerCustomStatusEffects(statusDocuments);
+}
+async function addStatusEffects(collection) {
+    let documents = await collection.getDocuments();
+    if (!documents) return;
+    let statusDocuments = documents.filter(i => i.flags['side-effects']?.statusId && i.type === 'base');
+    let statusEffectsAdded = game.settings.get('side-effects', 'statusEffectsAdded');
+    if (statusEffectsAdded) return;
+    let addStatusEffects = game.settings.get('side-effects', 'addStatusEffects');
+    if (!addStatusEffects) return;
+    let statusIds = statusDocuments.map(i => i.flags['side-effects'].statusId);
+    let statusEffects = foundry.utils.deepClone(CONFIG.statusEffects).filter(e => !statusIds.includes(e.id));
+    if (!statusEffects.length) return;
+    let folder = collection.folders.find(f => f.name === _loc('SIDEFFECTS.EffectDirectory.StatusEffectsFolder.Name'));
+    if (!folder) {
+        let folderData = {
+            name: _loc('SIDEFFECTS.EffectDirectory.StatusEffectsFolder.Name'),
+            type: 'ActiveEffect'
+        };
+        let folderContext = {
+            pack: collection.collection
+        };
+        folder = await foundry.documents.Folder.create(folderData, folderContext);
+    }
+    let folderId = folder.id;
+    return Promise.all(statusEffects.map(async effect => {
+        effect.folder = folderId;
+        if (effect.flags) effect.flags['side-effects'] = {statusId: effect.id};
+        else effect.flags = {'side-effects': {statusId: effect.id}};
+        await collection.documentClass.create(effect, {pack: collection.collection});
+    }));
+}
+function registerCustomStatusEffects(statusDocuments) {
     if (!statusDocuments.length) return;
     statusDocuments.forEach(effect => {
         let statusId = effect.flags['side-effects'].statusId;
@@ -315,7 +350,7 @@ function setup() {
 }
 async function ready() {
     if (!game.settings.get('side-effects', 'effectInterfaceEnabled')) return;
-    await registerCustomStatusEffects(true);
+    await readyStatusEffects(true);
     Hooks.on('preCreateActiveEffect', preCreateActiveEffect);
 }
 export let effectInterface = {

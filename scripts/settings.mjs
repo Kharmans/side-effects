@@ -5,6 +5,11 @@ const settingsData = {
         type: Boolean,
         default: false
     },
+    statusEffectsAdded: {
+        config: false,
+        type: Boolean,
+        default: false
+    },
     effectInterfaceEnabled: {
         config: true,
         type: Boolean,
@@ -26,6 +31,13 @@ const settingsData = {
             obj[key] = key.capitalize();
             return obj;
         }, {})
+    },
+    addStatusEffects: {
+        config: true,
+        type: Boolean,
+        default: false,
+        requiresReload: true,
+        onChange: value => {if (!value) game.settings.set('side-effects', 'statusEffectsAdded', false);}
     },
     temporaryEffectHud: {
         config: true,

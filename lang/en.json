@@ -12,6 +12,10 @@
       }
     },
     "Settings": {
+      "AddStatusEffects": {
+        "Name": "Add Status Effects",
+        "Hint": "Add all Status Effects to the Effect Compendium, once. "
+      },
       "EffectCompendium": {
         "Name": "Effect Compendium ID",
         "Hint": "The Compendium ID of the compendium that is linked to the Effect Interface. To copy a Compendium ID, open the compendium and click the book in the top right. Paste the ID here. Default is 'world.side-effects'."
@@ -27,6 +31,13 @@
       "TemporaryEffectHud": {
         "Name": "Temporary Effects Token HUD",
         "Hint": "Adds temporary effects to the status effect token HUD."
+      }
+    }
+  },
+  "SIDEFFECTS": {
+    "EffectDirectory": {
+      "StatusEffectsFolder": {
+        "Name": "Status Effects"
       }
     }
   }

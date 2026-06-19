@@ -9,12 +9,19 @@
       "CreateCompendium": {
         "Prompt": "Effect Compendium '{compendiumId}' does not exist. Effect Interface will not load. Do you want to automatically create a new compendium named '{compendiumName}' and reload? ",
         "Title": "Side Effects | Create Effect Compendium"
+      },
+      "StatusEffectsFolder": {
+        "Name": "Status Effects"
       }
     },
     "Settings": {
       "AddStatusEffects": {
         "Name": "Add Status Effects",
         "Hint": "Add all Status Effects to the Effect Compendium, once. "
+      },
+      "DisableSpecialEffects": {
+        "Name": "Disable Special Effects",
+        "Hint": "When enabled, blinded and invisible conditions will not apply visual effects."
       },
       "EffectCompendium": {
         "Name": "Effect Compendium ID",
@@ -28,16 +35,30 @@
         "Name": "Enable Effect Interface",
         "Hint": "Enables the Effect Interface, a document directory in the sidebar which is linked to a compendium. Allows custom status effects and managment of effects."
       },
+      "ExportForSharing":{
+        "Name": "Export for Sharing Option",
+        "Hint": "Adds an option to the item and actor directory context menus to export without descriptions."
+      },
+      "RemovedStatusEffects": {
+        "Name": "Removed Status Effects",
+        "Hint": "Select status effects to remove."
+      },
+      "RemoveStatusEffectsFromHud": {
+        "Name": "Remove Status Effects from Token HUD",
+        "Hint": "Prevents selected status effects from appearing on the token HUD."
+      },
+      "ReplaceStatusEffectIcons": {
+        "Name": "Replace Status Effect Icons",
+        "Hint": "Replaces some default status effect icons. This will still respect changes in the effect interface."
+      },
       "TemporaryEffectHud": {
         "Name": "Temporary Effects Token HUD",
         "Hint": "Adds temporary effects to the status effect token HUD."
       }
-    }
-  },
-  "SIDEFFECTS": {
-    "EffectDirectory": {
-      "StatusEffectsFolder": {
-        "Name": "Status Effects"
+    },
+    "Macros": {
+      "ExportForSharing": {
+        "Label": "Export for Sharing"
       }
     }
   }

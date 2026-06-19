@@ -1,4 +1,6 @@
-import {effectHud} from './applications/effectHud.mjs';
+import {effectHud} from './macros/effectHud.mjs';
+import {effects} from './macros/effects.mjs';
+import {exportForSharing} from './macros/exportForSharing.mjs';
 const settingsData = {
     effectCompendiumCreated: {
         config: false,
@@ -44,8 +46,69 @@ const settingsData = {
         type: Boolean,
         default: false,
         onChange: value => effectHud.toggle(value)
+    },
+    replaceStatusEffectIcons: {
+        config: true,
+        type: Boolean,
+        default: false,
+        requiresReload: true
+    },
+    removeStatusEffectsFromHud: {
+        config: true,
+        type: Boolean,
+        default: false,
+        requiresReload: true
+    },
+    removedStatusEffects: {
+        config: true,
+        type: new foundry.data.fields.SetField(
+            new foundry.data.fields.StringField({
+                choices: () => CONFIG.statusEffects.reduce((obj, i) => {
+                    obj[i.id] = {label: i.name};
+                    return obj;
+                })
+            })
+        ),
+        default: [
+            'bleeding',
+            'burrowing',
+            'cursed',
+            'encumbered',
+            'ethereal',
+            'exceedingCarryingCapacity',
+            'flanked',
+            'flanking',
+            'flying',
+            'heavilyEncumbered',
+            'hovering',
+            'marked',
+            'sleeping',
+            'transformed',
+            'hiding',
+            'stable',
+            'surprised',
+            'silenced',
+            'dodging',
+            'burning',
+            'dehydration',
+            'falling',
+            'malnutrition',
+            'suffocation'
+        ],
+        requiresReload: true
+    },
+    disableSpecialEffects: {
+        config: true,
+        type: Boolean,
+        default: false,
+        onChange: value => effects.disableSpecialEffects(value)
+    },
+    exportForSharing: {
+        config: true,
+        type: Boolean,
+        default: false,
+        requiresReload: true
     }
-
 };
 function addSetting(key, options) {
     const defaultOptions = {

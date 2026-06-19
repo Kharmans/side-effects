@@ -281,10 +281,10 @@ async function addStatusEffects(collection) {
     let statusIds = statusDocuments.map(i => i.flags['side-effects'].statusId);
     let statusEffects = foundry.utils.deepClone(CONFIG.statusEffects).filter(e => !statusIds.includes(e.id));
     if (!statusEffects.length) return;
-    let folder = collection.folders.find(f => f.name === _loc('SIDEFFECTS.EffectDirectory.StatusEffectsFolder.Name'));
+    let folder = collection.folders.find(f => f.name === _loc('SIDEEFFECTS.EffectDirectory.StatusEffectsFolder.Name'));
     if (!folder) {
         let folderData = {
-            name: _loc('SIDEFFECTS.EffectDirectory.StatusEffectsFolder.Name'),
+            name: _loc('SIDEEFFECTS.EffectDirectory.StatusEffectsFolder.Name'),
             type: 'ActiveEffect'
         };
         let folderContext = {
@@ -326,7 +326,6 @@ function preCreateActiveEffect(effect, updates, options, userId) {
     delete statusData._id;
     delete statusData.origin;
     effect.updateSource(statusData);
-
 }
 // Hooks
 function init() {

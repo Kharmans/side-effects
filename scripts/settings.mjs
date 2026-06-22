@@ -2,6 +2,7 @@ import {effectHud} from './macros/effectHud.mjs';
 import {effects} from './macros/effects.mjs';
 import {exportForSharing} from './macros/exportForSharing.mjs';
 import {hiddenCompendiums} from './macros/hiddenCompendiums.mjs';
+import {customUi} from './macros/ui.mjs';
 const settingsData = {
     effectCompendiumCreated: {
         config: false,
@@ -114,8 +115,45 @@ const settingsData = {
         config: false,
         type: Object,
         default: {folders: [], packs: []},
-        onChange: () => {ui.compendium.render(true);}
+        onChange: () => ui.compendium.render(true)
+    },
+    uiButtonScale: {
+        config: true,
+        type: new foundry.data.fields.NumberField({
+            min: 0.1,
+            max: 3,
+            step: 0.1,
+            initial: 1
+        }),
+        scope: 'client',
+        onChange: value => customUi.buttonScale(value)
+    },
+    uiNavigationScale: {
+        config: true,
+        type: new foundry.data.fields.NumberField({
+            min: 0.1,
+            max: 3,
+            step: 0.1,
+            initial: 1
+        }),
+        scope: 'client',
+        onChange: value => customUi.navigationScale(value)
+    },
+    uiSidebar: {
+        config: true,
+        type: Boolean,
+        default: false,
+        scope: 'client',
+        onChange: value => customUi.customSidebar(value)
+    },
+    uiChatMessage: {
+        config: true,
+        type: Boolean,
+        default: false,
+        scope: 'client',
+        onChange: value => customUi.customChatMessage(value)
     }
+
 };
 const menusData = {
     hiddenCompendiums: {

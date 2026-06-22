@@ -59,6 +59,22 @@
       "TemporaryEffectHud": {
         "Name": "Temporary Effects Token HUD",
         "Hint": "Adds temporary effects to the status effect token HUD."
+      },
+      "UiButtonScale": {
+        "Name": "UI Button Scale",
+        "Hint": "Scales the control buttons."
+      },
+      "UiNavigationScale": {
+        "Name": "UI Navigation Scale",
+        "Hint": "Scales the navigation buttons."
+      },
+      "UiChatMessage": {
+        "Name": "Chat Message Dark Mode",
+        "Hint": "Enables a dark mode for chat messages."
+      },
+      "UiSidebar": {
+        "Name": "Custom Sidebar",
+        "Hint": "Visual tweaks to the sidebar including chat background, scrollbar flipping, and other minor changes."
       }
     },
     "Macros": {

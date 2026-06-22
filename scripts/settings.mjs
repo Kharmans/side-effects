@@ -1,6 +1,7 @@
 import {effectHud} from './macros/effectHud.mjs';
 import {effects} from './macros/effects.mjs';
 import {exportForSharing} from './macros/exportForSharing.mjs';
+import {hiddenCompendiums} from './macros/hiddenCompendiums.mjs';
 const settingsData = {
     effectCompendiumCreated: {
         config: false,
@@ -108,6 +109,18 @@ const settingsData = {
         type: Boolean,
         default: false,
         requiresReload: true
+    },
+    hiddenCompendiums: {
+        config: false,
+        type: Object,
+        default: {folders: [], packs: []},
+        onChange: () => {ui.compendium.render(true);}
+    }
+};
+const menusData = {
+    hiddenCompendiums: {
+        icon: 'fas fa-book-atlas',
+        type: hiddenCompendiums.HiddenCompendiumSelector
     }
 };
 function addSetting(key, options) {
@@ -119,9 +132,20 @@ function addSetting(key, options) {
     };
     game.settings.register('side-effects', key, foundry.utils.mergeObject(defaultOptions, options));
 }
+function addMenu(key, options) {
+    const defaultOptions = {
+        name: 'SIDEEFFECTS.Settings.' + key.capitalize() + '.Name',
+        label: 'SIDEEFFECTS.Settings.' + key.capitalize() + '.Label',
+        hint: 'SIDEEFFECTS.Settings.' + key.capitalize() + '.Hint'
+    };
+    game.settings.registerMenu('side-effects', key, foundry.utils.mergeObject(defaultOptions, options));
+}
 function init() {
     Object.entries(settingsData).sort().forEach(([key, options]) => {
         addSetting(key, options);
+    });
+    Object.entries(menusData).forEach(([key, options]) => {
+        addMenu(key, options);
     });
 }
 export let settings = {

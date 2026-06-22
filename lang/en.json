@@ -35,9 +35,14 @@
         "Name": "Enable Effect Interface",
         "Hint": "Enables the Effect Interface, a document directory in the sidebar which is linked to a compendium. Allows custom status effects and managment of effects."
       },
-      "ExportForSharing":{
+      "ExportForSharing": {
         "Name": "Export for Sharing Option",
         "Hint": "Adds an option to the item and actor directory context menus to export without descriptions."
+      },
+      "HiddenCompendiums": {
+        "Name": "Hidden Compendiums",
+        "Label": "Configure Hidden Compendiums",
+        "Hint": "Selected compendiums will not be rendered in the compendium directory."
       },
       "RemovedStatusEffects": {
         "Name": "Removed Status Effects",
@@ -49,7 +54,7 @@
       },
       "ReplaceStatusEffectIcons": {
         "Name": "Replace Status Effect Icons",
-        "Hint": "Replaces some default status effect icons. This will still respect changes in the effect interface."
+        "Hint": "Replaces some default status effect icons. This will still respect changes from the effect interface."
       },
       "TemporaryEffectHud": {
         "Name": "Temporary Effects Token HUD",
@@ -59,6 +64,10 @@
     "Macros": {
       "ExportForSharing": {
         "Label": "Export for Sharing"
+      },
+      "HiddenCompendiums": {
+        "Label": "Side Effects - Hidden Compendiums",
+        "Legend": "Select Compendiums to Hide:"
       }
     }
   }

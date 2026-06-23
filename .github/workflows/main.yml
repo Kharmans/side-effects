@@ -37,11 +37,12 @@ jobs:
         jq --arg version "${{ env.VERSION }}" \
            --arg manifest "${{ env.FOUNDRY_MANIFEST }}" \
            --arg download "${{ env.FOUNDRY_DOWNLOAD }}" \
-           '.version = $version | .manifest = $manifest | .download = $download'
+           '.version = $version | .manifest = $manifest | .download = $download' \
+           module.json > module.json
 
     # Create a zip file with all files required by CAT (Notice 'dist' replaces 'scripts')
     - name: Zip Module Files
-      run: zip -r ./module.zip module.json dist styles templates lang README.md
+      run: zip -r ./module.zip module.json scripts styles images lang README.md
 
     # Create a release for this specific version
     - name: Update Release with Files

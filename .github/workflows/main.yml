@@ -38,7 +38,8 @@ jobs:
            --arg manifest "${{ env.FOUNDRY_MANIFEST }}" \
            --arg download "${{ env.FOUNDRY_DOWNLOAD }}" \
            '.version = $version | .manifest = $manifest | .download = $download' \
-           module.json > module.json
+           module.json > temp.json
+        mv temp.json module.json
 
     # Create a zip file with all files required by CAT (Notice 'dist' replaces 'scripts')
     - name: Zip Module Files

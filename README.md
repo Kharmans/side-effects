@@ -12,7 +12,7 @@ An interface-focused module providing an effect directory and other small interf
 - Preset custom status effect icons.
 - Disable blinded and invisible conditions from applying visual effects.
 - Item directory context option to export items without a description, for easy sharing.
-- Scale the control and navigation butttons.
+- Scale the control and navigation buttons.
 
 ## Licenses:
 The assets included in this module are distributed under various terms, please see their `LICENSE` file for full details.

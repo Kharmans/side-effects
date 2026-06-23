@@ -23,7 +23,7 @@ const settingsData = {
     effectCompendium: {
         config: true,
         type: String,
-        default: 'world.effects',
+        default: 'world.side-effects',
         requiresReload: true
     },
     effectInterfacePlacement: {
